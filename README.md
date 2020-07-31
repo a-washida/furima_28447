@@ -33,17 +33,17 @@ Things you may want to cover:
 
 ## items テーブル
 
-| Column             | Type       | Options                        |
-| ------------------ | ---------- | ------------------------------ |
-| user               | references | null: false, foreign_key: true |
-| name               | string     | null: false                    |
-| description        | text       | null: false                    |
-| category_id        | integer    | null: false, foreign_key: true |
-| status_id          | integer    | null: false, foreign_key: true |
-| shipping_fee       | string     | null: false                    |
-| prefecture_id      | integer    | null: false, foreign_key: true |
-| day_until_shipping | string     | null: false                    |
-| price              | integer    | null: false                    |
+| Column                | Type       | Options                        |
+| --------------------- | ---------- | ------------------------------ |
+| user                  | references | null: false, foreign_key: true |
+| name                  | string     | null: false                    |
+| description           | text       | null: false                    |
+| category_id           | integer    | null: false, foreign_key: true |
+| status_id             | integer    | null: false, foreign_key: true |
+| shipping_fee_id       | integer    | null: false                    |
+| prefecture_id         | integer    | null: false, foreign_key: true |
+| day_until_shipping_id | integer    | null: false                    |
+| price                 | integer    | null: false                    |
 
 ### Association
 - belongs_to :user
@@ -51,7 +51,9 @@ Things you may want to cover:
 - has_one_attached :image
 - belongs_to_active_hash :category
 - belongs_to_active_hash :status
+- belongs_to_active_hash :shipping_fee
 - belongs_to_active_hash :prefecture
+- belongs_to_active_hash :day_until_shipping
 
 ## orders テーブル
 
