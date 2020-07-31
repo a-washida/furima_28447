@@ -29,6 +29,7 @@ Things you may want to cover:
 
 ### Association
 - has_many :items
+- has_many :orders
 - has_many :destinations
 
 ## items テーブル
@@ -47,11 +48,24 @@ Things you may want to cover:
 
 ### Association
 - belongs_to :user
+- has_one :order
 - has_one :destination
 - has_one_attached :image
 - belongs_to_active_hash :category
 - belongs_to_active_hash :status
 - belongs_to_active_hash :prefecture
+
+## orders テーブル
+
+| Column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| user_id       | references | null: false, foreign_key: true |
+| item_id       | references | null: false, foreign_key: true |
+
+### Association
+- belongs_to :user
+- belongs_to :item
+- has_one :destination
 
 ## destinations テーブル
 
@@ -65,11 +79,13 @@ Things you may want to cover:
 | address       | string     | null: false                    |
 | building_name | string     |
 | phone_number  | string     | null: false                    |
+| order_id       | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
 - belongs_to :item
+- belongs_to :order
 - belongs_to_active_hash :prefecture
 
 
