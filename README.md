@@ -30,7 +30,6 @@ Things you may want to cover:
 ### Association
 - has_many :items
 - has_many :destinations
-- has_one :card
 
 ## items テーブル
 
@@ -49,7 +48,6 @@ Things you may want to cover:
 ### Association
 - belongs_to :user
 - has_one :destination
-- has_one :card
 - has_one_attached :image
 - belongs_to_active_hash :category
 - belongs_to_active_hash :status
@@ -73,18 +71,6 @@ Things you may want to cover:
 - belongs_to :user
 - belongs_to :item
 - belongs_to_active_hash :prefecture
-
-## cards テーブル
-
-| Column  | Type       | Options                        |
-| ------- | ---------- | ------------------------------ |
-| item_id | references | null: false, foreign_key: true |
-| user_id | references | null: false, foreign_key: true |
-
-### Association
-
-- belongs_to :user
-- belongs_to :item
 
 
 
