@@ -48,6 +48,7 @@ Things you may want to cover:
 ### Association
 - belongs_to :user
 - has_one :order
+- has_one :destination
 - has_one_attached :image
 - belongs_to_active_hash :category
 - belongs_to_active_hash :status
@@ -65,13 +66,12 @@ Things you may want to cover:
 ### Association
 - belongs_to :user
 - belongs_to :item
-- has_one :destination
 
 ## destinations テーブル
 
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
-| order         | references | null: false, foreign_key: true |
+| item          | references | null: false, foreign_key: true |
 | postal_code   | string     | null: false                    |
 | prefecture_id | integer    | null: false, foreign_key: true |
 | city          | string     | null: false                    |
@@ -80,7 +80,7 @@ Things you may want to cover:
 | phone_number  | string     | null: false                    |
 
 ### Association
-- belongs_to :order
+- belongs_to :item
 - belongs_to_active_hash :prefecture
 
 
