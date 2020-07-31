@@ -38,10 +38,10 @@ Things you may want to cover:
 | user               | references | null: false, foreign_key: true |
 | name               | string     | null: false                    |
 | description        | text       | null: false                    |
-| category           | references | null: false, foreign_key: true |
-| status             | references | null: false, foreign_key: true |
+| category_id        | integer    | null: false, foreign_key: true |
+| status_id          | integer    | null: false, foreign_key: true |
 | shipping_fee       | string     | null: false                    |
-| prefecture         | references | null: false, foreign_key: true |
+| prefecture_id      | integer    | null: false, foreign_key: true |
 | day_until_shipping | string     | null: false                    |
 | price              | integer    | null: false                    |
 
@@ -71,7 +71,7 @@ Things you may want to cover:
 | ------------- | ---------- | ------------------------------ |
 | order         | references | null: false, foreign_key: true |
 | postal_code   | string     | null: false                    |
-| prefecture    | references | null: false, foreign_key: true |
+| prefecture_id | integer    | null: false, foreign_key: true |
 | city          | string     | null: false                    |
 | address       | string     | null: false                    |
 | building_name | string     |
