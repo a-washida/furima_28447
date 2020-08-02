@@ -68,49 +68,49 @@ RSpec.describe Item, type: :model do
     it 'category_idが1では登録できないこと' do
       @item.category_id = 1
       @item.valid?
-      expect(@item.errors.full_messages).to include("Category Select")
+      expect(@item.errors.full_messages).to include('Category Select')
     end
 
     it 'status_idが1では登録できないこと' do
       @item.status_id = 1
       @item.valid?
-      expect(@item.errors.full_messages).to include("Status Select")
+      expect(@item.errors.full_messages).to include('Status Select')
     end
 
     it 'shipping_fee_idが1では登録できないこと' do
       @item.shipping_fee_id = 1
       @item.valid?
-      expect(@item.errors.full_messages).to include("Shipping fee Select")
+      expect(@item.errors.full_messages).to include('Shipping fee Select')
     end
 
     it 'prefecture_idが1では登録できないこと' do
       @item.prefecture_id = 1
       @item.valid?
-      expect(@item.errors.full_messages).to include("Prefecture Select")
+      expect(@item.errors.full_messages).to include('Prefecture Select')
     end
 
     it 'day_until_shipping_idが1では登録できないこと' do
       @item.day_until_shipping_id = 1
       @item.valid?
-      expect(@item.errors.full_messages).to include("Day until shipping Select")
+      expect(@item.errors.full_messages).to include('Day until shipping Select')
     end
 
     it 'priceが300未満では登録できないこと' do
       @item.price = 200
       @item.valid?
-      expect(@item.errors.full_messages).to include("Price must be greater than or equal to 300")
+      expect(@item.errors.full_messages).to include('Price must be greater than or equal to 300')
     end
 
     it 'priceが9,999,999より大きいと登録できないこと' do
-      @item.price = 100000000
+      @item.price = 100_000_000
       @item.valid?
-      expect(@item.errors.full_messages).to include("Price must be less than or equal to 9999999")
+      expect(@item.errors.full_messages).to include('Price must be less than or equal to 9999999')
     end
 
-    it "ユーザーが紐付いていないと商品は保存できない" do
+    it 'ユーザーが紐付いていないと商品は保存できない' do
       @item.user = nil
       @item.valid?
-      expect(@item.errors.full_messages).to include("User must exist")
+      expect(@item.errors.full_messages).to include('User must exist')
     end
   end
 end

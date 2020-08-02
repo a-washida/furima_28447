@@ -17,10 +17,10 @@ class Item < ApplicationRecord
     validates :shipping_fee
     validates :prefecture
     validates :day_until_shipping
-    validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
+    validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
   end
 
-  with_options numericality: { other_than: 1, message: "Select" } do
+  with_options numericality: { other_than: 1, message: 'Select' } do
     validates :category_id
     validates :status_id
     validates :shipping_fee_id
@@ -28,10 +28,9 @@ class Item < ApplicationRecord
     validates :day_until_shipping_id
   end
 
-
-  #空の投稿を保存できないようにする
+  # 空の投稿を保存できないようにする
   # validates :category, presence: true
 
-  #ジャンルの選択が「--」の時は保存できないようにする
+  # ジャンルの選択が「--」の時は保存できないようにする
   # validates :category_id, numericality: { other_than: 1 }
 end

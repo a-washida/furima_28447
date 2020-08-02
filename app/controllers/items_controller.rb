@@ -18,7 +18,6 @@ class ItemsController < ApplicationController
     end
   end
 
-
   private
 
   def item_params
@@ -26,8 +25,6 @@ class ItemsController < ApplicationController
   end
 
   def move_to_new_user_session
-    unless user_signed_in?
-      redirect_to new_user_session_path
-    end
+    redirect_to new_user_session_path unless user_signed_in?
   end
 end
