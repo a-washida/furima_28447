@@ -9,14 +9,21 @@ class Item < ApplicationRecord
   belongs_to_active_hash :day_until_shipping
 
   with_options presence: true do
-    with_options numericality: { other_than: 1 } do
-      validates :category
-      validates :status
-      validates :shipping_fee
-      validates :prefecture
-      validates :day_until_shipping
-    end
+    validates :category
+    validates :status
+    validates :shipping_fee
+    validates :prefecture
+    validates :day_until_shipping
   end
+
+  with_options numericality: { other_than: 1 } do
+    validates :category_id
+    validates :status_id
+    validates :shipping_fee_id
+    validates :prefecture_id
+    validates :day_until_shipping_id
+  end
+
 
   #空の投稿を保存できないようにする
   # validates :category, presence: true
