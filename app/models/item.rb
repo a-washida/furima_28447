@@ -20,7 +20,7 @@ class Item < ApplicationRecord
     validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
   end
 
-  with_options numericality: { other_than: 1 } do
+  with_options numericality: { other_than: 1, message: "Select" } do
     validates :category_id
     validates :status_id
     validates :shipping_fee_id
