@@ -9,11 +9,15 @@ class Item < ApplicationRecord
   belongs_to_active_hash :day_until_shipping
 
   with_options presence: true do
+    validates :image
+    validates :name
+    validates :description
     validates :category
     validates :status
     validates :shipping_fee
     validates :prefecture
     validates :day_until_shipping
+    validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
   end
 
   with_options numericality: { other_than: 1 } do
