@@ -16,17 +16,5 @@
     <% end %>
   </div>
 
-
-  <footer class="items-sell-footer">
-    <ul class="menu">
-      <li><%= link_to 'プライバシーポリシー', '#' %></li>
-      <li><%= link_to 'フリマ利用規約', '#' %></li>
-      <li><%= link_to '特定商取引に関する表記', '#' %></li>
-    </ul>
-    <%= link_to image_tag('furima-logo-color.png' , size: '185x50'), "/" %>
-    <p class="inc">
-      ©︎Furima,Inc.
-    </p>
-  </footer>
-
+  <%= render partial: "footer" %>
 </div>
