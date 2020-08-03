@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: :show
+  before_action :set_item, only: [:show, :edit, :update]
   before_action :move_to_new_user_session, except: [:index, :show]
+  before_action :move_to_root_not_exhibitor, only: :edit
 
   def index
     @items = Item.includes(:user)
@@ -22,6 +23,17 @@ class ItemsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @item.update(item_params)
+      redirect_to item_path(@item.id)
+    else
+      render :edit
+    end
+  end
+
   private
 
   def item_params
@@ -34,5 +46,9 @@ class ItemsController < ApplicationController
 
   def move_to_new_user_session
     redirect_to new_user_session_path unless user_signed_in?
+  end
+
+  def move_to_root_not_exhibitor
+    redirect_to root_path unless user_signed_in? && current_user.id == @item.user.id
   end
 end
