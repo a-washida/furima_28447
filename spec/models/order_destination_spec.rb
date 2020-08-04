@@ -15,9 +15,9 @@ RSpec.describe OrderDestination, type: :model do
       expect(@order_destination.errors.full_messages).to include("Postal code can't be blank")
     end
     it 'postal_codeにハイフンがないと保存できないこと' do
-      @order_destination.postal_code = "1111111"
+      @order_destination.postal_code = '1111111'
       @order_destination.valid?
-      expect(@order_destination.errors.full_messages).to include("Postal code Input correctly")
+      expect(@order_destination.errors.full_messages).to include('Postal code Input correctly')
     end
     it 'prefecture_idが空だと保存できないこと' do
       @order_destination.prefecture_id = nil
@@ -27,7 +27,7 @@ RSpec.describe OrderDestination, type: :model do
     it 'prefecture_idが1では登録できないこと' do
       @order_destination.prefecture_id = 1
       @order_destination.valid?
-      expect(@order_destination.errors.full_messages).to include("Prefecture Select")
+      expect(@order_destination.errors.full_messages).to include('Prefecture Select')
     end
     it 'cityが空だと保存できないこと' do
       @order_destination.city = nil
@@ -49,9 +49,9 @@ RSpec.describe OrderDestination, type: :model do
       expect(@order_destination.errors.full_messages).to include("Phone number can't be blank")
     end
     it 'phone_numberが12桁以上だと保存できないこと' do
-      @order_destination.phone_number = "111122223333"
+      @order_destination.phone_number = '111122223333'
       @order_destination.valid?
-      expect(@order_destination.errors.full_messages).to include("Phone number is too long (maximum is 11 characters)")
-    end  
+      expect(@order_destination.errors.full_messages).to include('Phone number is too long (maximum is 11 characters)')
+    end
   end
 end
