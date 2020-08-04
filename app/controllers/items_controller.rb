@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :move_to_new_user_session, except: [:index, :show]
   before_action :move_to_root_not_exhibitor, only: [:edit, :destroy]
+  before_action :move_to_root_if_item_sold, only: :show
 
   def index
     @items = Item.includes(:user)
@@ -58,5 +59,9 @@ class ItemsController < ApplicationController
 
   def move_to_root_not_exhibitor
     redirect_to root_path unless user_signed_in? && current_user.id == @item.user.id
+  end
+
+  def move_to_root_if_item_sold
+    redirect_to root_path unless @item.order.nil?
   end
 end
