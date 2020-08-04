@@ -49,6 +49,6 @@ class OrdersController < ApplicationController
   end
 
   def move_to_root_if_item_sold
-    redirect_to root_path unless @item.order.nil?
+    redirect_to root_path if @item.order.present?
   end
 end
