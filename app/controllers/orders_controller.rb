@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  before_action :move_to_new_user_session, only: :index
   before_action :set_item, only: [:index, :create]
 
   def index
@@ -36,6 +37,10 @@ class OrdersController < ApplicationController
       card: order_params[:token],
       currency:'jpy'
     )
+  end
+
+  def move_to_new_user_session
+    redirect_to new_user_session_path unless user_signed_in?
   end
 
 end
