@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   before_action :move_to_new_user_session, only: :index
   before_action :set_item, only: [:index, :create]
+  before_action :move_to_root_if_exhibitor, only: :index
 
   def index
     @order = OrderDestination.new
@@ -41,6 +42,10 @@ class OrdersController < ApplicationController
 
   def move_to_new_user_session
     redirect_to new_user_session_path unless user_signed_in?
+  end
+
+  def move_to_root_if_exhibitor
+    redirect_to root_path if user_signed_in? && current_user.id == @item.user.id
   end
 
 end
