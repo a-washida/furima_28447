@@ -1,9 +1,5 @@
 function calculate_profit() {
   const price = document.getElementById("item_price");
-  if (price.getAttribute("data-load") != null) {
-    return null;
-  }
-  price.setAttribute("data-load", "true");
   price.addEventListener("input", (e) => {
     let fee = document.getElementById("add-tax-price");
     let profit = document.getElementById("profit");
@@ -15,8 +11,7 @@ function calculate_profit() {
       profit.innerHTML = "半角数字のみ入力可能"
     }
 
-    e.preventDefault();
     });
 }
 
-setInterval(calculate_profit, 1000);
+window.addEventListener("load", calculate_profit);
