@@ -4,6 +4,15 @@ const pay = () => {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
 
+    const sendWithoutCardInfo = () => {
+      document.getElementById("order_destination_number").removeAttribute("name");
+      document.getElementById("order_destination_cvc").removeAttribute("name");
+      document.getElementById("order_destination_exp_month").removeAttribute("name");
+      document.getElementById("order_destination_exp_year").removeAttribute("name");
+      document.getElementById("charge-form").submit();
+      document.getElementById("charge-form").reset();
+    }
+
     const formResult = document.getElementById("charge-form");
     const formData = new FormData(formResult);
 
@@ -20,15 +29,10 @@ const pay = () => {
         const renderDom = document.getElementById("charge-form");
         const tokenObj = `<input value=${token} type="hidden" name='token'>`;
         renderDom.insertAdjacentHTML("beforeend", tokenObj);
-
-        document.getElementById("order_destination_number").removeAttribute("name");
-        document.getElementById("order_destination_cvc").removeAttribute("name");
-        document.getElementById("order_destination_exp_month").removeAttribute("name");
-        document.getElementById("order_destination_exp_year").removeAttribute("name");
-
-        document.getElementById("charge-form").submit();
-        document.getElementById("charge-form").reset();
+        sendWithoutCardInfo()
       } else {
+        window.alert('購入処理に失敗しました。\nお手数ですが最初からやり直してください。')
+        sendWithoutCardInfo()
       }
     });
   });
